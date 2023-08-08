@@ -1,0 +1,18 @@
+h1{
+    font-family: 'Franklin Gothic Medium';
+    color: rgb(26, 26, 69);
+}
+
+body{
+    background-color: rgb(127, 190, 190);
+}
+
+#especial{
+    font-family: cursive;
+    text-decoration: underline;
+}
+
+p{
+    font-family: Arial;
+}
+
