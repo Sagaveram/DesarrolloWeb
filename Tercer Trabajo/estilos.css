@@ -18,6 +18,7 @@ p{
 
 h1:hover{
     color: darkred;
+    font-size: 300%;
 }
 
 h2::shadow{
@@ -26,7 +27,8 @@ h2::shadow{
 
 h2 + p {
     font-family: Impact;
-    color:chartreuse;
+    color:rgba(255, 0, 140, 0.878);
+    font-size: 30px;
 }
 
 h2::first-letter{
@@ -36,6 +38,7 @@ h2::first-letter{
 div p span{
     text-decoration:underline;
     color:deeppink;
+    font-size: 20px;
     
 }
 
@@ -51,3 +54,11 @@ img:hover {
     transform: scale(1.5);
 }
 
+@media (width<478px){
+    div p span{
+        text-decoration:underline;
+        color:rgb(255, 20, 20);
+        font-size: 20px;
+        
+    }
+}
