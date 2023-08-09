@@ -1,0 +1,49 @@
+h1{
+    font-family: 'Franklin Gothic Medium';
+    color: rgb(26, 26, 69);
+}
+
+body{
+    background-color: rgb(127, 190, 190);
+}
+
+#especial{
+    font-family: cursive;
+    text-decoration: underline;
+}
+
+p{
+    font-family: Arial;
+}
+
+h1:hover{
+    color: darkred;
+}
+
+h2::shadow{
+    
+}
+
+h2 + p {
+    font-family: Impact;
+    color:chartreuse;
+}
+
+h2::first-letter{
+    color: darkmagenta;
+}
+
+div p span{
+    text-decoration:underline;
+    color:deeppink;
+    
+}
+
+p::after{
+    content:"  (*-*)";
+}
+
+h2::before{
+    content: "//  ";
+}
+
