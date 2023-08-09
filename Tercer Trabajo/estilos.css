@@ -3,6 +3,10 @@ h1{
     color: rgb(26, 26, 69);
 }
 
+h1::after{
+    content: "  Tamaño PC";
+}
+
 body{
     background-color: rgb(127, 190, 190);
 }
@@ -61,4 +65,18 @@ img:hover {
         font-size: 20px;
         
     }
+}
+
+@media (width<=768px) {
+    h1::after{
+        content: "  Tamaño Tablet";
+    }
+
+}
+
+@media (width<=426px) {
+    h1::after{
+        content: "  Tamaño Celular";
+    }
+
 }
