@@ -1,0 +1,11 @@
+.botoncentrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+div.tarjetas { border: 1px solid red; }
+
+body{
+  background-color: aliceblue;
+}
