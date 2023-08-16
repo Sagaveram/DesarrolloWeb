@@ -5,18 +5,28 @@
 }
 
 div.tarjetas {
-  border: 1px solid black;
+  border: 5px solid black;
 }
 
 body {
   background-color:slateblue;
 }
 
-.col-md-6 {
+.col-md-5 {
   flex-direction: column;
   display: flex;
   align-content: center;
   margin: auto;
   align-items: center;
   background-color:whitesmoke;
+  
+}
+
+.bg-2{
+  background: linear-gradient(to right, slateblue, whitesmoke);
+}
+
+.t-stroke-shadow {
+  color: #f0a0a7;
+  text-shadow: -3px 3px #ffffff, -3px -3px #ffffff, 3px -3px #ffffff, 3px 3px #f3f3f2, 6px 6px #6ac7c2;
 }
