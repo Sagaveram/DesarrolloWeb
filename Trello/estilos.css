@@ -1,11 +1,22 @@
 .botoncentrado {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-div.tarjetas { border: 1px solid red; }
+div.tarjetas {
+  border: 1px solid black;
+}
 
-body{
-  background-color: aliceblue;
+body {
+  background-color:slateblue;
+}
+
+.col-md-6 {
+  flex-direction: column;
+  display: flex;
+  align-content: center;
+  margin: auto;
+  align-items: center;
+  background-color:whitesmoke;
 }
