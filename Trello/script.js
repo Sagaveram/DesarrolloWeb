@@ -112,7 +112,7 @@ function agregarColumna() {
           <h1>Columna Prueba</h1>
           <br />
           <div class="card botoncentrado" style="width: 75%;">
-            <img src="..\Trello\descarga (1).png" class="card-img-top" alt="...">
+            <img src="..\\Trello\\descarga (1).png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Tarjeta 1</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -129,7 +129,7 @@ function agregarColumna() {
           </div>
           <br />
           <div class="card" style="width: 75%;">
-            <img src="..\Trello\descarga (1).png" class="card-img-top" alt="...">
+            <img src="..\\Trello\\descarga (1).png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -170,7 +170,7 @@ function agregarTarjeta() {
   
   nuevaTarjeta.innerHTML = `
       
-  <img src="..\Trello\descarga (1).png" class="card-img-top" alt="...">
+  <img src="..\\Trello\\descarga (1).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -195,6 +195,32 @@ const botonColumna = document.getElementById("boton");
 const boton1 = document.getElementById("boton1");
 botonColumna.addEventListener("click", agregarColumna);
 boton1.addEventListener("click",agregarTarjeta);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const textoInput = document.getElementById("textoInput");
+  const agregarBotones = document.querySelectorAll(".agregarBoton");
+
+  function agregarContenido(contenedor) {
+      const mensaje = textoInput.value;
+      if (mensaje.trim() !== "") {
+          const nuevoParrafo = document.createElement("p");
+          nuevoParrafo.textContent = mensaje;
+          contenedor.appendChild(nuevoParrafo);
+          textoInput.value = "";
+      }
+  }
+
+  agregarBotones.forEach(function (boton) {
+      boton.addEventListener("click", function () {
+          const contenedorID = boton.getAttribute("data-contenedor");
+          const contenedor = document.getElementById(contenedorID);
+          agregarContenido(contenedor);
+      });
+  });
+});
+
+
+
 
 
 
