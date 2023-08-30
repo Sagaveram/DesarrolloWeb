@@ -1,0 +1,10 @@
+body{
+    background-color: aliceblue;
+}
+
+*#nombre1{
+    color: blueviolet;
+    font-size: larger;
+    font-family: Arial;
+    font-weight:bolder;
+}
