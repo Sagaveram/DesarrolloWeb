@@ -1,0 +1,214 @@
+Tutorial de angular
+
+Para crear un nuevo proyecto en angular debemos darle en la carpeta que lo quieramos crear
+ng new nombreAplicacion
+Solicita varias características, aceptamos y se crea
+
+Una vez que estamos posicionados en la aplicacion podemos darle
+ng serve --open para inicializar el servidor en el que se mostrara el proyecto
+
+ARCHIVOS		DETALLES
+app.component.ts	El código de clase del componente, escrito en TypeScript.
+app.component.html	La plantilla del componente, escrita en HTML.
+app.component.css	Los estilos CSS privados del componente.
+
+En src/styles.css podemos definir los estilos generales con los que queremos que cuente nuestra aplicación
+------------------------------------------------------------------------------------------------------------------
+Para crear un nuevo componente, como por ejemplo en este caso heroes podemos utilizar:
+
+ng generate component heroes
+
+ng generate crea un nuevo directorio, src/app/heroes/y genera los tres archivos de HeroesComponentjunto con un archivo de prueba.
+
+Así se ve el archivo de clase de heroes:
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
+export class HeroesComponent {
+}
+
+
+PROPIEDADES	DETALLES
+selector	El selector de elementos CSS del componente.
+templateUrl	La ubicación del archivo de plantilla del componente.
+styleUrls	La ubicación de los estilos CSS privados del componente.
+
+Si queremos agregarle una propiedad a la clase heroes, lo debemos de hacer desde la clase de heroes, y luego podemos mostrar esto desde donde se encuentra el html de heroes
+
+Para mostrar el HTML de la clase heroes debemos hacerlo desde la appComponent principal agregando lo siguiente:
+
+<app-heroes></app-heroes>
+
+En el archivo src/app, podemos crear una interfaz de heroe de la siguiente manera:
+
+export interface Hero {
+  id: number;
+  name: string;
+}
+
+Regrese a la HeroesComponent clase e importe la Herointerfaz.
+
+Refactorice la propiedad del componente heropara que sea de tipo Hero. Inicialícelo con un id of 1 y el nombre Windstorm.
+
+import { Component } from '@angular/core';
+import { Hero } from '../hero';
+
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
+export class HeroesComponent {
+  hero: Hero = {
+    id: 1,
+    name: 'Windstorm'
+  };
+}
+
+Para mostrar ahora el HTML de heroe luego de estos cambios debemos ir a su html y realizar los siguientes cambios:
+
+<h2>{{hero.name}} Details</h2>
+<div><span>id: </span>{{hero.id}}</div>
+<div><span>name: </span>{{hero.name}}</div>
+
+
+De esta forma podemos cambiar el hero.name a mayúsculas: <h2>{{hero.name | uppercase}} Details</h2>
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Para poder interactuar con el usuario, y cambiar el nombre del heroe de forma interactiva por ejemplo, debemos de generar un enlace bidireccional entre el input y la propiedad hero.name.
+
+De esta manera podemos refactorizar el html de la clase hero para lograr lo anteriormente nombrado
+
+<div>
+  <label for="name">Hero name: </label>
+  <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>
+
+[(ngModel)]es la sintaxis de enlace de datos bidireccional de Angular.
+
+Para que el ngModel pueda funcionar debemos de importar ciertos formModules
+
+En la app principal debemos de agregar lo siguiente: 
+
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+
+Luego también en la app principal debemos de buscar la matriz @NgModuleimports y agregar en la parte de imports los siguientes elementos
+
+imports: [
+  BrowserModule,
+  FormsModule
+],
+
+Cada componente debe declararse exactamente en un NgModule .
+Cuando uno crea una entidad como por ejemplo heroe en este caso, esta se agrega de forma automatica al ngModule, por esto podemos ver en la app principal
+
+import { HeroesComponent } from './heroes/heroes.component';
+
+y también heroes component en declarations:
+
+declarations: [
+  AppComponent,
+  HeroesComponent
+],
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Podemos crear un nuevo archivo llamado mock-heroes.ts en src/app y allí podemos cargar por ejemplo una matriz que contenga varios heroes:
+
+import { Hero } from './hero';
+
+export const HEROES: Hero[] = [
+  { id: 12, name: 'Dr. Nice' },
+  { id: 13, name: 'Bombasto' },
+  { id: 14, name: 'Celeritas' },
+  { id: 15, name: 'Magneta' },
+  { id: 16, name: 'RubberMan' },
+  { id: 17, name: 'Dynama' },
+  { id: 18, name: 'Dr. IQ' },
+  { id: 19, name: 'Magma' },
+  { id: 20, name: 'Tornado' }
+];
+
+Luego en la clase HeroesComponent podemos importar este archivo para poder utilizar los heroes:
+
+import { HEROES } from '../mock-heroes';
+
+En HeroesComponentclase, defina una propiedad de componente llamada heroes para exponer la HEROES matriz para su vinculación.
+
+export class HeroesComponent {
+
+  heroes = HEROES;
+}
+
+De esta forma cargamos a la variable heroes la lista de HEROES que importamos del otro archivo.
+
+De esa variable heroes, podemos crear una lista que muestre todos los elementos de la siguiente manera:
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <button type="button">
+      <span class="badge">{{hero.id}}</span>
+      <span class="name">{{hero.name}}</span>
+    </button>
+  </li>
+</ul>
+
+Es la directiva repetidora *ngFor de Angular. Repite el elemento anfitrión para cada elemento de una lista.
+
+La sintaxis en este ejemplo es la siguiente:
+
+SINTAXIS	DETALLES
+<li>		El elemento anfitrión.
+heroes		Contiene la lista de héroes simulados de la HeroesComponentclase, la lista de héroes simulados.
+hero		Mantiene el objeto héroe actual para cada iteración a través de la lista.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Agregue un enlace de evento de clic a este <button>estilo <li>:
+
+héroes.component.html (extracto de plantilla)
+
+<li *ngFor="let hero of heroes">
+  <button type="button" (click)="onSelect(hero)">
+  <!-- ... -->
+
+Los paréntesis click le dicen a Angular que escuche el evento <button>del elemento click. Cuando el usuario hace clic en <button>, Angular ejecuta la onSelect(hero)expresión.
+
+En la siguiente sección, defina un onSelect() método HeroesComponent para mostrar el héroe que se definió en la expresión.*ngFor
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Se puede agregar un controlador de eventos:
+
+selectedHero?: Hero;
+onSelect(hero: Hero): void {
+  this.selectedHero = hero;
+}
+
+el siguiente onSelect() método, que asigna el héroe en el que se hizo clic desde la plantilla al archivo selectedHero.
+
+En el siguiente código, con el *ngIf podemos hacer que se muestren los detalles del heroe, solo cuando hagamos click encima de el.
+Esto es posible tambien gracias a la función selectedHero que nos indica cuál estamos seleccionando.
+
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div>id: {{selectedHero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+  </div>
+</div>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+héroes.component.html (alternar la clase CSS 'seleccionada')
+
+[class.selected]="hero === selectedHero"
+
+De esta forma en la aplicación cuando hacemos click encima de un heroe el mismo queda marcado con un estilo específico hasta que se clickea sobre otro heroe
+
+
