@@ -210,5 +210,28 @@ héroes.component.html (alternar la clase CSS 'seleccionada')
 [class.selected]="hero === selectedHero"
 
 De esta forma en la aplicación cuando hacemos click encima de un heroe el mismo queda marcado con un estilo específico hasta que se clickea sobre otro heroe
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Para separar las funcionalidades en diferentes clases para que el programa sea mas escalable, podemos crear un nuevo componente:
+
+ng generate component hero-detail
+
+El comando desarrolla lo siguiente:
+
+Crea un directorio src/app/hero-detail.
+Dentro de ese directorio, se crean cuatro archivos:
+
+Un archivo CSS para los estilos de los componentes.
+Un archivo HTML para la plantilla del componente.
+Un archivo TypeScript con una clase de componente denominada HeroDetailComponent.
+Un archivo de prueba para la HeroDetailComponentclase.
+El comando también agrega HeroDetailComponentcomo declaración en el decorador del archivo.@NgModulesrc/app/app.module.ts
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 
 
