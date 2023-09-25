@@ -16,7 +16,7 @@ export class ListaJuegosComponent implements OnInit {
   getJuegos(): void {
     this.juegoService
       .getJuegos()
-      .subscribe((juegos) => (this.juegos = [...juegos.results]));
+      .subscribe((juegos) => (this.juegos = juegos.results));
     console.log(this.juegos);
   }
 }
