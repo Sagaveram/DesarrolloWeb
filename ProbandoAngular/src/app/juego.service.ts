@@ -22,5 +22,11 @@ getJuegos(): Observable<any> {
   return this.http.get<any>(this.juegosURL)
     
 }
+searchGames(query: string): Observable<any> {
+  const searchURL = `${this.juegosURL}&search=${query}`;
+  return this.http.get<any>(searchURL);
+}
+
+
 
 }

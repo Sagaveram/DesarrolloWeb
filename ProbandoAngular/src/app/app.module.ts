@@ -13,6 +13,19 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from  '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FooterComponent } from './footer/footer.component';
+
+
+
+
+
+
 
 
 
@@ -21,7 +34,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   declarations: [
     AppComponent,
     ListaJuegosComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +46,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule
       
     
   ],
