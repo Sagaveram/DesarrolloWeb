@@ -20,6 +20,13 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from  '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './nav/nav.component';
+import {NgIf} from '@angular/common';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+
+
 
 
 
@@ -36,7 +43,10 @@ import { FooterComponent } from './footer/footer.component';
     ListaJuegosComponent,
     HeaderComponent,
     SearchbarComponent,
-    FooterComponent
+    FooterComponent,
+    
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -50,7 +60,10 @@ import { FooterComponent } from './footer/footer.component';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    NgIf,
+    MatSidenavModule, 
+    
       
     
   ],
