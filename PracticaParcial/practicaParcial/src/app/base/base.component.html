@@ -1,0 +1,11 @@
+<section>
+    <form>
+        <div id="google-search">
+            <input type="text" id="search-input" placeholder="Buscar en Google">
+            <button id="search-button">Buscar</button>
+        </div>
+    </form>
+  </section>
+  <section class="results">
+    <app-tarjeta [tarjeta]="tarjeta" *ngFor="let tarjeta of tarjetaList"></app-tarjeta>
+</section>

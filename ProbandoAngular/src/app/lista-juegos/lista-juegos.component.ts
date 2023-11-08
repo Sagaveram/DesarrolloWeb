@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { JuegoService } from '../juego.service';
+
 
 @Component({
   selector: 'app-lista-juegos',
@@ -7,16 +8,22 @@ import { JuegoService } from '../juego.service';
   styleUrls: ['./lista-juegos.component.css'],
 })
 export class ListaJuegosComponent implements OnInit {
+  test:string='';
   constructor(private juegoService: JuegoService) {}
   juegos: any;
+
   ngOnInit(): void {
     this.getJuegos();
+    
   }
 
   getJuegos(): void {
     this.juegoService
       .getJuegos()
-      .subscribe((juegos) => (this.juegos = juegos.results));
+      .subscribe((juegos) => (this.juegos = [...juegos.results]));
     console.log(this.juegos);
   }
+
+  
+
 }

@@ -1,10 +1,10 @@
 <div class="search-bar">
-    <input
+    <input #filter
       type="text"
-      placeholder="Buscar en Google"
-      [(ngModel)]="searchQuery"
+      name="buscadorPost"
+      placeholder="Buscar juegos..."
     />
-    <button (click)="onSearch()">Buscar</button>
+    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
   </div>
   <br>
   

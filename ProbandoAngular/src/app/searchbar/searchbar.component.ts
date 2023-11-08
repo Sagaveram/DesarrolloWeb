@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component ,ElementRef,ViewChild} from '@angular/core';
 import { JuegoService } from '../juego.service'; // Asegúrate de importar el servicio adecuadamente
+import {debounceTime, distinctUntilChanged, fromEvent, map} from 'rxjs';
 
 
 @Component({
@@ -7,33 +8,21 @@ import { JuegoService } from '../juego.service'; // Asegúrate de importar el se
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.css']
 })
-export class SearchbarComponent {
-  searchQuery: string = '';
-  searchResults: any[] = [];
+export class SearchbarComponent  {
+  @ViewChild('variableBusqueda')
+  variableBusqueda ?: ElementRef
+  constructor(private juegoService:JuegoService) {}
 
-  constructor(private juegoService: JuegoService) {}
+  public filterResults(texto:String){
 
-  onSearch() {
-    this.searchGames(this.searchQuery);
   }
-
-  private searchGames(query: string) {
-    if (query.trim() === '') {
-      this.searchResults = [];
-      return;
-    }
-
-    this.juegoService.searchGames(query)
-      .subscribe(
-        (result) => {
-          console.log('Resultados de la búsqueda:', result);
-          this.searchResults = result.results;
-        },
-        (error) => {
-          console.error('Error al realizar la búsqueda:', error);
-        }
-      );
+  
+ 
   }
+  
+ 
 
 
-}
+
+
+

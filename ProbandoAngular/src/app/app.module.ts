@@ -25,6 +25,11 @@ import {NgIf} from '@angular/common';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { BuscadorPipe } from './buscador.pipe';
+import { BuscadorJuegosComponent } from './buscador-juegos/buscador-juegos.component';
+
+
+
 
 
 
@@ -44,6 +49,9 @@ import { FormGroup } from '@angular/forms';
     HeaderComponent,
     SearchbarComponent,
     FooterComponent,
+    BuscadorPipe,
+    BuscadorJuegosComponent,
+    
     
     
     
@@ -62,7 +70,8 @@ import { FormGroup } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     NgIf,
-    MatSidenavModule, 
+    MatSidenavModule,
+     
     
       
     
